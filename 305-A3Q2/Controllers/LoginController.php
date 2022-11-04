@@ -35,6 +35,14 @@ class LoginController extends Controller
                         $_SESSION['photo'] = $r->photo;
                         $_SESSION['typeOfUser'] = $r->typeofuser;
                         $_SESSION['isLogin'] = true;
+
+                        $uid = $_SESSION['uid'];
+                        $result2 = DB::table('sc_cart')->where('uid',$uid)->get();
+                        $i = 0;
+                        foreach($result2 as $r2){
+                            $_SESSION['my_cart'][$i] = array("PID"=>$r2->pid,"Qty"=>$r2->qty);
+                            $i++;
+                        }
                         if($r->typeofuser == 'Admin'){
                             return redirect('admin/home');
                         }

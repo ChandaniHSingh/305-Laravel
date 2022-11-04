@@ -10,6 +10,8 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingReportController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ConfirmPaymentController;
+use App\Http\Controllers\PaySlipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +78,10 @@ Route::get('/customer/ajaxProductByCustomer/{cid}/{scid}',[ProductController::cl
 Route::get('/customer/ajaxSubCategoryByCustomer/{id}',[SubCategoryController::class,'ajaxSubCategoryByCustomer']);
 // Cart
 Route::post('/customer/manageCartByCustomer',[CartController::class,'manageCartByCustomer']);
+Route::get('/customer/viewcart',[CartController::class,'viewCartByCustomer']);
+Route::get('/customer/removecartitem/{pid}',[CartController::class,'removeCartItemByCustomer']);
+// ConfirmPayment
+Route::get('/customer/viewconfirmpayment/{amt}',[ConfirmPaymentController::class,'viewConfirmPaymentByCustomer']);
+Route::get('/customer/confirmpayment/{amt}',[ConfirmPaymentController::class,'confirmPaymentByCustomer']);
+// PaySlip
+Route::get('/customer/viewpayslip/{amt}/{invoiceID}',[PaySlipController::class,'viewPaySlipByCustomer']);

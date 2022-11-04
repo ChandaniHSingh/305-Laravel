@@ -15,6 +15,8 @@ class LogoutController extends Controller
             unset($_SESSION['name']);
             unset($_SESSION['photo']);
             unset($_SESSION['typeOfUser']);
+            
+            session_destroy();
             $_SESSION['isLogin'] = false;
 
             return redirect('login');
